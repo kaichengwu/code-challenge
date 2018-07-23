@@ -1,0 +1,30 @@
+
+
+##### Top 1 customer LTV
+1.
+sfly_dwh.Ingest(input_rec, test_data)
+2.
+sfly_dwh.TopXSimpleLTVCustomers(1, test_data)
+
+--------------------------
+====
+==== LTV output
+====
+====
+=====================
+Top 1 Customer LTV
+[['a6f55c7d8f42', 'Batman', 2246.8000000000002]]o
+
+
+
+=====================
+====
+==== Ingest output
+====
+=====================
+
+('NEW is not valid. Expect ', ['UPLOAD'])
+('OLD is not valid. Expect ', ['NEW'])
+After Ingestion
+[{'last_name': 'Smith', 'event_time': '2017-01-06T12:46:46.384Z', 'verb': 'NEW', 'key': '96f55c7d8f42', 'adr_state': 'AK', 'adr_city': 'Middletown', 'type': 'CUSTOMER'}, {'event_time': '2017-01-06T12:45:52.041Z', 'tags': {'some key': 'some value'}, 'verb': 'NEW', 'key': 'ac05e815502f', 'customer_id': '96f55c7d8f42', 'type': 'SITE_VISIT'}, {'event_time': '2017-01-06T12:45:52.041Z', 'tags': [{'some key': 'some value'}], 'verb': 'NEW', 'key': 'ac05e815502f', 'customer_id': '96f55c7d8f42', 'type': 'SITE_VISIT'}, {'camera_make': 'Canon', 'event_time': '2017-01-06T12:47:12.344Z', 'camera_model': 'EOS 80D', 'verb': 'UPLOAD', 'key': 'd8ede43b1d9f', 'customer_id': '96f55c7d8f42', 'type': 'IMAGE'}, {'total_amount': '12.34 USD', 'event_time': '2017-01-06T12:55:55.555Z', 'verb': 'NEW', 'key': '68d84e5d1a43', 'customer_id': '96f55c7d8f42', 'type': 'ORDER'}, {'last_name': 'Batman', 'event_time': '2018-01-06T12:46:46.384Z', 'verb': 'NEW', 'key': 'a6f55c7d8f42', 'adr_state': 'CA', 'adr_city': 'Middletown', 'type': 'CUSTOMER'}, {'last_name': 'Batman', 'event_time': '2018-01-06T12:46:46.384Z', 'verb': 'UPDATE', 'key': 'a6f55c7d8f42', 'adr_state': 'NY', 'adr_city': 'Gotham', 'type': 'CUSTOMER'}, {'camera_make': 'Canon', 'event_time': '2017-01-06T12:47:12.344Z', 'camera_model': 'EOS 80D', 'verb': 'UPLOAD', 'key': '18ede43b1d9f', 'customer_id': 'a6f55c7d8f42', 'type': 'IMAGE'}, {'total_amount': '12.34 USD', 'event_time': '2018-01-06T12:55:55.555Z', 'verb': 'NEW', 'key': '28d84e5d1a43', 'customer_id': 'a6f55c7d8f42', 'type': 'ORDER'}, {'total_amount': '212.34 USD', 'event_time': '2018-01-06T12:55:55.555Z', 'verb': 'UPDATE', 'key': '28d84e5d1a43', 'customer_id': 'a6f55c7d8f42', 'type': 'ORDER'}, {'event_time': '2018-01-06T12:45:52.041Z', 'tags': {'some key1': 'some value1'}, 'verb': 'NEW', 'key': '3c05e815502f', 'customer_id': 'a6f55c7d8f42', 'type': 'SITE_VISIT'}]
+

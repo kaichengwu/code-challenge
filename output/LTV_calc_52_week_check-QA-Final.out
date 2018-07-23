@@ -1,0 +1,35 @@
+mysql>
+mysql> select a.customer_hash_key,
+          from (select max(week_period) maxwk from sfly_ltv_tally) t
+       )
+    and a.customer_hash_key = b.customer_hash_key
+  group by a.customer_hash_key,
+    ->        b.last_name,
+    ->        sum(num_visit) total_num_visit,
+    ->        sum(exp_amt) * 10 total_LTV
+    ->   from sfly_ltv_tally a,
+    ->        sfly_customer_dtl b
+    ->  where a.week_period <= (select max(week_period) from sfly_ltv_tally)
+    ->    and a.week_period >=
+    ->        (select yearweek(date_add(str_to_date(
+    ->                concat(convert(maxwk, char), ' Monday'), '%X%V %W'),
+    ->                        interval -365 DAY))
+    ->           from (select max(week_period) maxwk from sfly_ltv_tally) t
+    ->        )
+    ->     and a.customer_hash_key = b.customer_hash_key
+    ->   group by a.customer_hash_key,
+    ->            b.last_name
+    ->   order by total_LTV desc;
++-------------------+-----------+-----------------+--------------------+
+| customer_hash_key | last_name | total_num_visit | total_LTV          |
++-------------------+-----------+-----------------+--------------------+
+| 94fefd07be64      | Skywalker |               8 | 11630.400466918945 |
+| 32f7102a208f      | Organa    |               8 | 10030.399703979492 |
+| 77c2e499cdf2      | Yoda      |               8 |  8430.399703979492 |
+| 9fc93acaa44f      | Skywalker |               8 |  3415.199851989746 |
+| 96f55c7d8f42      | Smith     |              16 |  2615.199851989746 |
++-------------------+-----------+-----------------+--------------------+
+5 rows in set (0.00 sec)
+
+
+

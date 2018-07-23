@@ -1,0 +1,24 @@
+mysql> select a.customer_hash_key,
+       sum(exp_amt) * 10 total_LTV
+  from sfly_ltv_tally a,
+       sfly_customer_dtl b
+    ->        b.last_name,
+    ->        sum(num_visit) total_num_visit,
+    ->        sum(exp_amt) * 10 total_LTV
+    ->   from sfly_ltv_tally a,
+    ->        sfly_customer_dtl b
+    ->     where a.customer_hash_key = b.customer_hash_key
+    ->   group by a.customer_hash_key,
+    ->            b.last_name
+    ->   order by total_LTV desc;
++-------------------+-----------+-----------------+--------------------+
+| customer_hash_key | last_name | total_num_visit | total_LTV          |
++-------------------+-----------+-----------------+--------------------+
+| 94fefd07be64      | Skywalker |              16 | 24908.801345825195 |
+| 32f7102a208f      | Organa    |              16 |   21708.7996673584 |
+| 77c2e499cdf2      | Yoda      |              16 |   18508.7996673584 |
+| 9fc93acaa44f      | Skywalker |              16 |  7654.399757385254 |
+| 96f55c7d8f42      | Smith     |              32 |  6054.399757385254 |
++-------------------+-----------+-----------------+--------------------+
+5 rows in set (0.00 sec)
+

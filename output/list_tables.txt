@@ -1,0 +1,274 @@
+--------------
+describe lu_activity_type
+--------------
+
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| id            | int(11)     | NO   |     | NULL    |       |
+| activity_name | varchar(20) | NO   |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+--------------
+describe  lu_activity_verb
+--------------
+
++-------------+---------+------+-----+---------+-------+
+| Field       | Type    | Null | Key | Default | Extra |
++-------------+---------+------+-----+---------+-------+
+| id          | int(11) | NO   |     | NULL    |       |
+| activity_id | int(11) | NO   |     | NULL    |       |
+| verb_id     | int(11) | NO   |     | NULL    |       |
++-------------+---------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+--------------
+describe  lu_camera_brand
+--------------
+
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| id           | int(11)      | NO   |     | NULL    |       |
+| camera_brand | varchar(100) | NO   |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+--------------
+describe  lu_camera_model
+--------------
+
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| id              | int(11)      | NO   |     | NULL    |       |
+| camera_brand_id | int(11)      | NO   |     | NULL    |       |
+| camera_model    | varchar(100) | NO   |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+--------------
+describe  lu_state
+--------------
+
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| id         | int(11)     | NO   |     | NULL    |       |
+| state_code | varchar(10) | NO   |     | NULL    |       |
+| state_name | varchar(30) | NO   |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+--------------
+describe  lu_tag_key
+--------------
+
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| tag_hash_key | varchar(20)  | NO   |     | NULL    |       |
+| key_name     | varchar(100) | NO   |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+--------------
+describe  lu_verb
+--------------
+
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int(11)     | NO   |     | NULL    |       |
+| verb_name | varchar(20) | NO   |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+--------------
+describe  sfly_customer_dtl
+--------------
+
++-------------------+--------------+------+-----+-------------------+-----------------------------+
+| Field             | Type         | Null | Key | Default           | Extra                       |
++-------------------+--------------+------+-----+-------------------+-----------------------------+
+| customer_hash_key | varchar(20)  | NO   |     | NULL              |                             |
+| verb_id           | int(11)      | NO   |     | NULL              |                             |
+| event_time        | timestamp    | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+| last_name         | varchar(100) | YES  |     | NULL              |                             |
+| adr_city          | varchar(100) | YES  |     | NULL              |                             |
+| adr_state_code    | varchar(10)  | YES  |     | NULL              |                             |
++-------------------+--------------+------+-----+-------------------+-----------------------------+
+6 rows in set (0.00 sec)
+
+--------------
+describe  sfly_image_hist
+--------------
+
++-------------------+-------------+------+-----+-------------------+-----------------------------+
+| Field             | Type        | Null | Key | Default           | Extra                       |
++-------------------+-------------+------+-----+-------------------+-----------------------------+
+| image_hash_key    | varchar(20) | NO   |     | NULL              |                             |
+| verb_id           | int(11)     | NO   |     | NULL              |                             |
+| event_time        | timestamp   | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+| customer_hash_key | varchar(20) | NO   |     | NULL              |                             |
+| camera_brand_id   | int(11)     | YES  |     | NULL              |                             |
+| camera_model_id   | int(11)     | YES  |     | NULL              |                             |
++-------------------+-------------+------+-----+-------------------+-----------------------------+
+6 rows in set (0.00 sec)
+
+--------------
+describe  sfly_order_hist
+--------------
+
++-------------------+-------------+------+-----+-------------------+-----------------------------+
+| Field             | Type        | Null | Key | Default           | Extra                       |
++-------------------+-------------+------+-----+-------------------+-----------------------------+
+| order_hash_key    | varchar(20) | NO   |     | NULL              |                             |
+| verb_id           | int(11)     | NO   |     | NULL              |                             |
+| customer_hash_key | varchar(20) | NO   |     | NULL              |                             |
+| event_time        | timestamp   | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+| total_amt         | float       | NO   |     | NULL              |                             |
++-------------------+-------------+------+-----+-------------------+-----------------------------+
+5 rows in set (0.00 sec)
+
+--------------
+describe  sfly_site_visit
+--------------
+
++-------------------+-------------+------+-----+-------------------+-----------------------------+
+| Field             | Type        | Null | Key | Default           | Extra                       |
++-------------------+-------------+------+-----+-------------------+-----------------------------+
+| page_hash_key     | varchar(20) | NO   |     | NULL              |                             |
+| customer_hash_key | varchar(20) | NO   |     | NULL              |                             |
+| verb_id           | int(11)     | NO   |     | NULL              |                             |
+| event_time        | timestamp   | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
++-------------------+-------------+------+-----+-------------------+-----------------------------+
+4 rows in set (0.00 sec)
+
+--------------
+describe  sfly_site_visit_tag
+--------------
+
++-------------------+--------------+------+-----+---------+-------+
+| Field             | Type         | Null | Key | Default | Extra |
++-------------------+--------------+------+-----+---------+-------+
+| tag_page_hash_key | varchar(20)  | NO   |     | NULL    |       |
+| tag_hash_key      | varchar(20)  | NO   |     | NULL    |       |
+| key_val           | varchar(100) | NO   |     | NULL    |       |
++-------------------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| id            | int(11)     | NO   |     | NULL    |       |
+| activity_name | varchar(20) | NO   |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
++-------------+---------+------+-----+---------+-------+
+| Field       | Type    | Null | Key | Default | Extra |
++-------------+---------+------+-----+---------+-------+
+| id          | int(11) | NO   |     | NULL    |       |
+| activity_id | int(11) | NO   |     | NULL    |       |
+| verb_id     | int(11) | NO   |     | NULL    |       |
++-------------+---------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| id           | int(11)      | NO   |     | NULL    |       |
+| camera_brand | varchar(100) | NO   |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| id              | int(11)      | NO   |     | NULL    |       |
+| camera_brand_id | int(11)      | NO   |     | NULL    |       |
+| camera_model    | varchar(100) | NO   |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| id         | int(11)     | NO   |     | NULL    |       |
+| state_code | varchar(10) | NO   |     | NULL    |       |
+| state_name | varchar(30) | NO   |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| tag_hash_key | varchar(20)  | NO   |     | NULL    |       |
+| key_name     | varchar(100) | NO   |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int(11)     | NO   |     | NULL    |       |
+| verb_name | varchar(20) | NO   |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
++-------------------+--------------+------+-----+-------------------+-----------------------------+
+| Field             | Type         | Null | Key | Default           | Extra                       |
++-------------------+--------------+------+-----+-------------------+-----------------------------+
+| customer_hash_key | varchar(20)  | NO   |     | NULL              |                             |
+| verb_id           | int(11)      | NO   |     | NULL              |                             |
+| event_time        | timestamp    | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+| last_name         | varchar(100) | YES  |     | NULL              |                             |
+| adr_city          | varchar(100) | YES  |     | NULL              |                             |
+| adr_state_code    | varchar(10)  | YES  |     | NULL              |                             |
++-------------------+--------------+------+-----+-------------------+-----------------------------+
+6 rows in set (0.00 sec)
+
++-------------------+-------------+------+-----+-------------------+-----------------------------+
+| Field             | Type        | Null | Key | Default           | Extra                       |
++-------------------+-------------+------+-----+-------------------+-----------------------------+
+| image_hash_key    | varchar(20) | NO   |     | NULL              |                             |
+| verb_id           | int(11)     | NO   |     | NULL              |                             |
+| event_time        | timestamp   | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+| customer_hash_key | varchar(20) | NO   |     | NULL              |                             |
+| camera_brand_id   | int(11)     | YES  |     | NULL              |                             |
+| camera_model_id   | int(11)     | YES  |     | NULL              |                             |
++-------------------+-------------+------+-----+-------------------+-----------------------------+
+6 rows in set (0.00 sec)
+
++-------------------+-------------+------+-----+-------------------+-----------------------------+
+| Field             | Type        | Null | Key | Default           | Extra                       |
++-------------------+-------------+------+-----+-------------------+-----------------------------+
+| order_hash_key    | varchar(20) | NO   |     | NULL              |                             |
+| verb_id           | int(11)     | NO   |     | NULL              |                             |
+| customer_hash_key | varchar(20) | NO   |     | NULL              |                             |
+| event_time        | timestamp   | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+| total_amt         | float       | NO   |     | NULL              |                             |
++-------------------+-------------+------+-----+-------------------+-----------------------------+
+5 rows in set (0.00 sec)
+
++-------------------+-------------+------+-----+-------------------+-----------------------------+
+| Field             | Type        | Null | Key | Default           | Extra                       |
++-------------------+-------------+------+-----+-------------------+-----------------------------+
+| page_hash_key     | varchar(20) | NO   |     | NULL              |                             |
+| customer_hash_key | varchar(20) | NO   |     | NULL              |                             |
+| verb_id           | int(11)     | NO   |     | NULL              |                             |
+| event_time        | timestamp   | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
++-------------------+-------------+------+-----+-------------------+-----------------------------+
+4 rows in set (0.00 sec)
+
++-------------------+--------------+------+-----+---------+-------+
+| Field             | Type         | Null | Key | Default | Extra |
++-------------------+--------------+------+-----+---------+-------+
+| tag_page_hash_key | varchar(20)  | NO   |     | NULL    |       |
+| tag_hash_key      | varchar(20)  | NO   |     | NULL    |       |
+| key_val           | varchar(100) | NO   |     | NULL    |       |
++-------------------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
