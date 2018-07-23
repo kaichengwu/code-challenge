@@ -1,1 +1,25 @@
 Your source files reside in this directory
+
+File description
+
+#1. DW model
+chk_tab.sql           : validate table count.
+cr_get_hash_key.sql   : SQL function to create hash key.
+find_ltv.sql          : Main SQL code to display Top LTV customers.
+ld_state.sql          : Load state codes.
+ls_tab.sql            : List table names.
+populate_input_data.sql   : populate input data by adding various date 
+                          data includes event_time older than 52 weeks from the                           the latest recorded events.
+populate_lookup.sql       : Populate lookup tables 
+sfly_ddl.sql              : table creation
+
+
+#2. Python runtime
+sfly_dwh.py              : Main codes to ingest and get LTV.
+                        Ingest(e, D) and TopXSimpleLTVCustomers(x, D)
+                          are the main calling programs.
+
+testcases.py            : simple test cases to ingest and calculate LTV
+                          Data is within 52 weeks.
+testcases2.py           : Event data older than 52 weeks and more data is 
+                          populated. 
